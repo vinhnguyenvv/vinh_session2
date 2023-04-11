@@ -70,10 +70,10 @@ const HomeView = () => {
                 })}
             />
 
-            <Button
+            {/* <Button
                 title="Go to Details"
                 onPress={() => RootNavigation.navigate("HomeDetailView")}
-            />
+            /> */}
         </View>
     );
 }
