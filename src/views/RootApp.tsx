@@ -14,6 +14,8 @@ import TabbarRoot from './TabbarRoot';
 import { TViewNames, viewsName } from './views-name';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
+import { NativeBaseProvider, Box } from "native-base";
+import { GlobalStoreProvider } from './stores/useGlobalStore';
 
 
 
@@ -71,28 +73,28 @@ const RootApp = (props: IRootAppProps) => {
         //     </Tab.Navigator>
         // </NavigationContainer >
 
-        <NavigationContainer ref={RootNavigation.navigationRef}>
-            <Drawer.Navigator
-            screenOptions ={{
-                // title  :'',
-                headerStyle: {
-                    backgroundColor: '#f4511e',
-                    // width: '10%',
-                  },
-                  headerShown: false,
-                  drawerStyle: {
-                    width: 240,
-                  }
-            }}
+        // <NavigationContainer ref={RootNavigation.navigationRef}>
+        //     <Drawer.Navigator
+        //     screenOptions ={{
+        //         // title  :'',
+        //         headerStyle: {
+        //             backgroundColor: '#f4511e',
+        //             // width: '10%',
+        //           },
+        //           headerShown: false,
+        //           drawerStyle: {
+        //             width: 240,
+        //           }
+        //     }}
 
-            initialRouteName='HomeView'
-             drawerContent={(props) => <MenuView {...props} />}>
-                <Drawer.Screen name="TabbarRoot" component={TabbarRoot} options={{
-                    //   header: () => true
-                    // title: ''
-                }} />
-            </Drawer.Navigator>
-        </NavigationContainer >
+        //     initialRouteName='HomeView'
+        //      drawerContent={(props) => <MenuView {...props} />}>
+        //         <Drawer.Screen name="TabbarRoot" component={TabbarRoot} options={{
+        //             //   header: () => true
+        //             // title: ''
+        //         }} />
+        //     </Drawer.Navigator>
+        // </NavigationContainer >
 
 
         // <NavigationContainer ref={RootNavigation.navigationRef}>
@@ -109,6 +111,23 @@ const RootApp = (props: IRootAppProps) => {
 
         //     </Drawer.Navigator>
         // </NavigationContainer>
+
+        <NativeBaseProvider >
+            <GlobalStoreProvider>
+                <NavigationContainer ref={RootNavigation.navigationRef}>
+                    <Drawer.Navigator
+                        drawerContent={(props) => <MenuView {...props} />}
+                        screenOptions={{
+                            headerShown: false
+                        }}
+                    >
+                        <Drawer.Screen name="TabbarRoot" component={TabbarRoot} options={{
+                            // header: () => null
+                        }} />
+                    </Drawer.Navigator>
+                </NavigationContainer >
+            </GlobalStoreProvider>
+        </NativeBaseProvider>
     )
 }
 export default RootApp;

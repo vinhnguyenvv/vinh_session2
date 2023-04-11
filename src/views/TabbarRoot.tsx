@@ -12,33 +12,46 @@ import View04 from "./main/View04";
 import View05 from "./main/View05";
 
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import Header from "./Header";
+import { useColorModeValue, useTheme } from 'native-base';
+
 
 const Tab = createBottomTabNavigator();
 
 const Stack = createNativeStackNavigator();
 
-const TabMaterial = createMaterialBottomTabNavigator();
-const stackScreenOptions = {
-    headerStyle: {
-        backgroundColor: '#f4511e',
-        width: '10%',
-        justifyContent:"flex-end",
-        alignSelf: 'flex-end'
-    },
-    headerTintColor: '#fff',
-};
+const TabMaterial = createBottomTabNavigator();
+
 
 const Tab01 = () => {
+    const {
+        colors
+    } = useTheme();
     return (
-        <Stack.Navigator screenOptions = {stackScreenOptions} >
+        <Stack.Navigator
+            // screenOptions={{
+            //     headerStyle: {
+            //         backgroundColor: colors["violet"]["800"]
+            //     }
+            // }} 
+
+            screenOptions={{
+                headerShown: false,
+                headerStyle: {
+                    
+                    backgroundColor: colors["violet"]["800"]
+                }
+            }}
+
+        >
             <Stack.Screen name={"View01"} component={View01} options={{
                 title: "View01",
-                headerShown: false
+                header: (props) => <Header {...props} />
             }} />
 
             <Stack.Screen name={"View02"} component={View02} options={{
                 title: "View02",
-                headerShown: false
+                // header: (props) => <Header {...props} />
             }} />
         </Stack.Navigator>
     )
@@ -46,11 +59,21 @@ const Tab01 = () => {
 
 
 const Tab02 = () => {
+    const {
+        colors
+    } = useTheme();
     return (
         <Stack.Navigator
+        screenOptions={{
+            // headerShown: false,
+            headerStyle: {
+                backgroundColor: colors["violet"]["800"]
+            }
+        }}
         >
             <Stack.Screen name={"View03"} component={View03} options={{
-                title: "View03"
+                title: "View03",
+                header: (props) => <Header {...props} />
             }} />
 
             <Stack.Screen name={"View04"} component={View04} options={{
@@ -70,8 +93,8 @@ const Tab02 = () => {
 const TabbarRoot = () => {
     return (
         <TabMaterial.Navigator
-        screenOptions ={{
-            // headerShown: false
+        screenOptions={{
+            headerShown: false
         }}
         >
             <TabMaterial.Screen name={"Tab01"} component={Tab01} options={{
