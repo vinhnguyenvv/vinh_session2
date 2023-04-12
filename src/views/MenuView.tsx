@@ -29,16 +29,11 @@ const menus = [
 
 
 const MenuView = (props: DrawerContentComponentProps) => {
-    const { themeMode, setThemeMode } = useGlobalStore();
+    const { valuseWhseid, setWhseid } = useGlobalStore();
 
     const changeWhseid = (al: string) => {
-        let ab = themeMode;
-        if (al == 'dark') {
-            ab = 'dark'
-        } else {
-            ab = 'light'
-        }
-        setThemeMode(ab);
+
+        setWhseid(al);
     }
 
     // const navigation = RootNavigation.navigationRef;

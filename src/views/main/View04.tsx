@@ -6,7 +6,7 @@ import { useGlobalStore } from "../stores/useGlobalStore";
 
 
 const View04 = () => {
-    const { themeMode, setThemeMode } = useGlobalStore();
+    const { themeMode, setThemeMode,valuseWhseid } = useGlobalStore();
 
     const styles = StyleSheet.create({
         dark: {
@@ -46,6 +46,7 @@ const View04 = () => {
     return (
         <View style={bg}>
             <Text style={bg.styText}>View04 </Text>
+            <Text style={{ fontSize: 20, color: "red" }}>{valuseWhseid}</Text>
 
         </View>
     );

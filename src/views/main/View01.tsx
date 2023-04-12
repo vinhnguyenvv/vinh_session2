@@ -4,12 +4,13 @@ import MainHeader from "../MainHeader";
 import { useState } from "react";
 import { Center, Radio } from "native-base";
 import { useGlobalStore } from "../stores/useGlobalStore";
+import { log } from "react-native-reanimated";
 
 
 
 
 const View01 = ({ navigation }: any) => {
-    const { themeMode, setThemeMode } = useGlobalStore();
+    const { themeMode, setThemeMode, valuseWhseid, setWhseid } = useGlobalStore();
 
     const changeTheme = (al: string) => {
         let ab = themeMode;
@@ -20,14 +21,12 @@ const View01 = ({ navigation }: any) => {
         }
         setThemeMode(ab);
     }
+
     const [value, setValue] = useState("light");
 
 
 
-    const [dataView, setDataView] = useState({
-        name: "Hello",
-        id: 1
-    })
+    const [dataView, setDataView] = useState()
 
     const styles = StyleSheet.create({
         dark: {
@@ -76,6 +75,8 @@ const View01 = ({ navigation }: any) => {
                         title="Go to Details"
                         onPress={() => navigation.navigate("View02")}
                     />
+                    <Text style={{ fontSize: 20, color: "red" }}>{valuseWhseid}</Text>
+                    <Text style={{ fontSize: 20, color: "red" }}>{themeMode}</Text>
 
                     {/* <Button
                         title="change theme"

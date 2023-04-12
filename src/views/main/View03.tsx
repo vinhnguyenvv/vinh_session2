@@ -6,7 +6,7 @@ import { useGlobalStore } from "../stores/useGlobalStore";
 
 
 const View03 = ({ navigation }: any) => {
-    const { themeMode, setThemeMode } = useGlobalStore();
+    const { themeMode, setThemeMode,valuseWhseid } = useGlobalStore();
 
     const styles = StyleSheet.create({
         dark: {
@@ -48,6 +48,9 @@ const View03 = ({ navigation }: any) => {
     return (
         <View style={bg}>
             <Text style={bg.styText}>View 03</Text>
+            <Text style={{ fontSize: 20, color: "red" }}>{valuseWhseid}</Text>
+
+            <Text style={{ fontSize: 20, color: "red" }}>{themeMode}</Text>
             <Button
                 title="Go to Details"
                 onPress={() => navigation.navigate("View03")}
